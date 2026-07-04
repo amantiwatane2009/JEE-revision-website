@@ -21,54 +21,6 @@ Still a work in progress! Right now it's just the navigation part (all the pages
 - No timer / mock test mode
 - No dark/light toggle
 
-## Built with
-
-Just plain HTML and CSS, no framework. Icons are from Font Awesome (CDN link). No JavaScript yet.
-
-## Folder structure
-
-```
-index.html          -> home page
-physics.html         -> physics topics
-chemistry.html        -> chemistry topics
-math.html            -> maths topics
-style.css            -> all the css
-
-Physics/
-  mechanics.html
-  thermo.html
-  electromechanics.html
-  optics.html
-  quantum.html
-
-Chemistry/
-  physical.html
-  inorganic.html
-  organic.html
-
-Math/
-  algebra.html
-  calculus.html
-  geometry.html
-```
-
-## How to run it
-
-Just clone it and open `index.html` in your browser, that's it. No installs needed.
-
-```bash
-git clone https://github.com/your-username/jee-mains-quiz.git
-```
-
-Then double click `index.html` or use Live Server in VS Code.
-
-## How to use
-
-Home page → click a subject → click a topic → click a chapter card. That's the whole flow for now since there's no quiz yet.
-
-## Why I made it this way
-
-Wanted every page to look and feel the same so it's easy to navigate — same card style everywhere, same navbar, same back button. Kept the design simple and dark so it's not distracting while studying.
 
 ## To-do / ideas for later
 
@@ -78,14 +30,6 @@ Wanted every page to look and feel the same so it's easy to navigate — same ca
 - [ ] Timed tests
 - [ ] Maybe login/save progress
 
-## License
-
-MIT
-
 ## Made by
 
 Aman Tiwatane
-
-## Thanks to
-
-Font Awesome for the icons
