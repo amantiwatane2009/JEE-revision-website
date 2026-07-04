@@ -1,217 +1,91 @@
-# 🧪 JEE Mains Quiz — Revise Smarter
+# JEE Mains Quiz 🧠
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-![Font Awesome](https://img.shields.io/badge/Font%20Awesome-7.0.1-528DD7?style=flat&logo=fontawesome&logoColor=white)
-![Status](https://img.shields.io/badge/status-in%20development-yellow)
-![License](https://img.shields.io/badge/license-MIT-green)
+A simple website I'm building to help revise for JEE Mains. The idea is basically: pick a subject → pick a topic → pick a chapter, instead of scrolling through one giant list of everything.
 
-A clean, subject-first revision hub for **JEE Mains** aspirants. The site organizes the entire syllabus — Physics, Chemistry, and Maths — into subjects → broad topics → chapters, so students can quickly navigate to exactly what they want to revise.
+Still a work in progress! Right now it's just the navigation part (all the pages you click through), the actual quiz/questions part isn't done yet.
 
-> ⚠️ **Current status:** The site is a fully-built static navigation structure (subject selection → topic selection → chapter selection). Quiz functionality (actual questions, scoring, timers) is **not yet implemented** — see [Future Enhancements](#-future-enhancements).
+## What it does right now
 
----
+- Home page where you pick Physics, Chemistry or Maths
+- Each subject has a page with its big topics (like Mechanics, Organic, Algebra etc.)
+- Each topic has its own page listing all the chapters as cards
+- Cards have a little hover animation
+- Works on mobile too (cards stack into 1 column)
+- Back button on every page
 
-## 📖 Overview
+## What it doesn't do yet (planned)
 
-JEE Mains preparation involves a huge, sprawling syllabus spread across three subjects. This project's goal is to make revision frictionless: instead of scrolling through long chapter lists, students move through a simple, guided drill-down flow:
+- No actual quiz/questions yet, chapter cards don't lead anywhere (`#`)
+- No scoring or tracking progress
+- "Short Notes" is in the navbar but doesn't exist yet
+- No timer / mock test mode
+- No dark/light toggle
 
-```
-Home → Subject (Physics / Chemistry / Maths) → Broad Topic → Chapter
-```
+## Built with
 
-Every screen uses the same clean card-based UI, so the experience stays consistent no matter which subject or topic a student is browsing.
+Just plain HTML and CSS, no framework. Icons are from Font Awesome (CDN link). No JavaScript yet.
 
----
-
-## ✨ Key Features
-
-### ✅ Implemented
-
-- **Home / Subject Selection Screen** — entry point with Physics, Chemistry, and Maths.
-- **Topic Selection Screens** for each subject:
-  - **Physics:** Mechanics, Thermodynamics and Heat, Electromechanics, Optics, Quantum Physics
-  - **Chemistry:** Physical, Inorganic, Organic
-  - **Maths:** Algebra, Calculus, Geometry
-- **Chapter Selection Screens** — a dedicated page per topic listing every individual chapter as a card (e.g. `Physics/mechanics.html` lists Units and Measurements, Motion in a Straight Line, Newton's Laws of Motion, and more).
-- **Consistent, reusable card component** (`.chapter-card`) with icon, title, and short description — used identically across all 11 topic pages.
-- **Hover animations** on all cards (lift + shadow + icon rotation) for a polished, tactile feel.
-- **Fully responsive layouts** — grids reflow from multi-column on desktop down to a single column on mobile.
-- **Centralized, reusable navigation bar** (with mobile hamburger menu) shared across every page.
-- **"Back" navigation** on every chapter screen, returning to the parent topic/subject screen.
-
-### 🔜 Planned (see [Future Enhancements](#-future-enhancements))
-
-- Interactive quizzes with real questions per chapter
-- Score tracking and performance analytics
-- A "Short Notes" section (already present as a nav link, not yet built)
-- Timed mock tests
-
----
-
-## 📸 Screenshots
-
-> Replace these placeholders with actual screenshots once available.
-
-| Home Screen | Subject → Topic Screen | Topic → Chapter Screen |
-|---|---|---|
-| ![Home Screen](docs/screenshots/home-screen.png) | ![Physics Topics](docs/screenshots/physics-topics.png) | ![Mechanics Chapters](docs/screenshots/mechanics-chapters.png) |
-
----
-
-## 🛠️ Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Markup | HTML5 (semantic, BEM-style class naming) |
-| Styling | Vanilla CSS3 (CSS custom properties / variables, Flexbox, CSS Grid) |
-| Icons | [Font Awesome 7.0.1](https://fontawesome.com/) (via CDN) |
-| Fonts | Open Sans |
-| Interactivity | None yet — pure static HTML/CSS (JavaScript planned for quiz logic) |
-| Hosting | Static — deployable on GitHub Pages, Netlify, or any static host |
-
-No build tools, bundlers, or package managers are required — this is a dependency-free static site.
-
----
-
-## 📁 Project Structure
+## Folder structure
 
 ```
-JEE-Chapter-Quiz/
-│
-├── index.html                  # Home / subject selection screen
-├── physics.html                # Physics topic selection screen
-├── chemistry.html              # Chemistry topic selection screen
-├── math.html                   # Maths topic selection screen
-├── style.css                   # Global stylesheet (shared by all pages)
-│
-├── images/                     # Static assets (logo, icons, etc.)
-│   └── atom.svg
-│
-├── Physics/                    # Chapter-level pages for each Physics topic
-│   ├── mechanics.html
-│   ├── thermo.html
-│   ├── electromechanics.html
-│   ├── optics.html
-│   └── quantum.html
-│
-├── Chemistry/                  # Chapter-level pages for each Chemistry topic
-│   ├── physical.html
-│   ├── inorganic.html
-│   └── organic.html
-│
-└── Math/                       # Chapter-level pages for each Maths topic
-    ├── algebra.html
-    ├── calculus.html
-    └── geometry.html
+index.html          -> home page
+physics.html         -> physics topics
+chemistry.html        -> chemistry topics
+math.html            -> maths topics
+style.css            -> all the css
+
+Physics/
+  mechanics.html
+  thermo.html
+  electromechanics.html
+  optics.html
+  quantum.html
+
+Chemistry/
+  physical.html
+  inorganic.html
+  organic.html
+
+Math/
+  algebra.html
+  calculus.html
+  geometry.html
 ```
 
-Each subject follows the same two-level pattern:
-`subject.html` (broad topics) → `Subject/topic.html` (individual chapters).
+## How to run it
 
----
+Just clone it and open `index.html` in your browser, that's it. No installs needed.
 
-## 🚀 Installation and Setup
+```bash
+git clone https://github.com/your-username/jee-mains-quiz.git
+```
 
-This is a static website — no dependencies, no build step.
+Then double click `index.html` or use Live Server in VS Code.
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/<your-username>/jee-mains-quiz.git
-   cd jee-mains-quiz
-   ```
+## How to use
 
-2. **Open it directly in a browser**
-   ```bash
-   # macOS
-   open index.html
+Home page → click a subject → click a topic → click a chapter card. That's the whole flow for now since there's no quiz yet.
 
-   # Windows
-   start index.html
+## Why I made it this way
 
-   # Linux
-   xdg-open index.html
-   ```
+Wanted every page to look and feel the same so it's easy to navigate — same card style everywhere, same navbar, same back button. Kept the design simple and dark so it's not distracting while studying.
 
-3. **(Recommended) Serve it locally** for correct relative-path behavior, using any static server, e.g.:
-   ```bash
-   npx serve .
-   ```
-   or, with the VS Code **Live Server** extension, right-click `index.html` → *Open with Live Server*.
+## To-do / ideas for later
 
-No `npm install`, environment variables, or configuration is required.
+- [ ] Add actual quiz questions per chapter
+- [ ] Score tracking
+- [ ] Short notes pages
+- [ ] Timed tests
+- [ ] Maybe login/save progress
 
----
+## License
 
-## 🧭 How to Use the Website
+MIT
 
-1. Land on the **Home** screen and choose a subject: **Physics**, **Chemistry**, or **Maths**.
-2. On the subject screen, pick a **broad topic** (e.g. Mechanics, Organic Chemistry, Calculus).
-3. On the topic screen, pick a specific **chapter** from the card grid (e.g. Newton's Laws of Motion, GOC, Integrals).
-4. Use the **Back** button at any point to return to the previous screen.
+## Made by
 
-> Chapter cards currently link to placeholder (`#`) targets — actual quiz pages for each chapter are part of the next development phase.
+Aman Tiwatane
 
----
+## Thanks to
 
-## 🎨 Design Philosophy & UI/UX Goals
-
-- **Consistency over novelty** — every subject/topic/chapter screen reuses the exact same layout primitives (`.chapter-main`, `.chapter-grid`, `.chapter-card`), so students never have to relearn a new UI as they move between subjects.
-- **Guided drill-down navigation** — rather than one overwhelming list of 50+ chapters, the three-tier flow (subject → topic → chapter) keeps each screen focused and scannable.
-- **Calm, distraction-free visual language** — a dark, low-saturation palette (defined via CSS variables) keeps the focus on content, not decoration.
-- **Tactile feedback** — subtle hover animations (lift, shadow, icon rotation) on every interactive card make the site feel responsive without being flashy.
-- **Mobile-first accessibility** — JEE aspirants often revise on their phones between classes; every screen is built to reflow cleanly from desktop grids down to single-column mobile layouts.
-
----
-
-## 🗺️ Future Enhancements
-
-These were planned during development but are **not yet implemented**:
-
-- 🧩 **Actual quiz engine** — MCQs per chapter with instant feedback, powered by JavaScript.
-- 📊 **Score tracking & analytics** — per-chapter and per-subject performance history.
-- ⏱️ **Timed mock tests** — full-length or subject-wise timed practice sets.
-- 📝 **Short Notes section** — quick-revision notes per chapter (already referenced in the navbar).
-- 🔖 **Bookmarking / "Practice Later"** for specific chapters or questions.
-- 🌗 **Light/Dark theme toggle**.
-- 👤 **User accounts** to persist progress across sessions/devices.
-- 🔍 **Search** across all chapters from any screen.
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! To contribute:
-
-1. Fork the repository.
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. Make your changes, keeping with the existing naming conventions (BEM-style classes, `.chapter-*` component patterns) and folder structure.
-4. Commit your changes with a clear message:
-   ```bash
-   git commit -m "Add: short notes page for Mechanics"
-   ```
-5. Push to your fork and open a Pull Request describing the change.
-
-Please keep new chapter/topic pages consistent with the existing patterns (same navbar markup, same card component, correct relative paths for nested folders) so the site remains uniform as it grows.
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
-
----
-
-## 👤 Author
-
-**Aman Tiwatane**
-
----
-
-## 🙏 Acknowledgements
-
-- [Font Awesome](https://fontawesome.com/) for the icon set used across all chapter and navigation UI.
-- The JEE Mains aspirant community, whose revision needs shaped the structure and flow of this project.
+Font Awesome for the icons
