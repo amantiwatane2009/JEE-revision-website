@@ -120,14 +120,55 @@ function initQuiz(config)
 
         questionText.textContent = currentQuestion.question;
 
+        // Optional image that's part of the question itself (e.g. a
+        // given v-t graph). Reuses/creates a single <img> so repeated
+        // calls don't pile up stale elements.
+        let questionImageEl = document.getElementById("quiz-question-image");
+        if (currentQuestion.image)
+        {
+            if (!questionImageEl)
+            {
+                questionImageEl = document.createElement("img");
+                questionImageEl.id = "quiz-question-image";
+                questionImageEl.classList.add("quiz-question-image");
+                questionText.insertAdjacentElement("afterend", questionImageEl);
+            }
+            questionImageEl.src = currentQuestion.image;
+            questionImageEl.alt = "Graph for this question";
+            questionImageEl.style.display = "block";
+        }
+        else if (questionImageEl)
+        {
+            questionImageEl.style.display = "none";
+        }
+
         answersContainer.innerHTML = "";
 
-        currentQuestion.answers.forEach((answer) =>
+        currentQuestion.answers.forEach((answer, answerIndex) =>
         {
             const button = document.createElement("button");
-            button.textContent = answer.text;
             button.classList.add("quiz-answer-btn");
             button.dataset.correct = answer.correct;
+            button.dataset.answerIndex = answerIndex;
+
+            if (answer.image)
+            {
+                button.classList.add("quiz-answer-btn--image");
+                const img = document.createElement("img");
+                img.src = answer.image;
+                img.alt = answer.text || "Answer option graph";
+                button.appendChild(img);
+                if (answer.text)
+                {
+                    const caption = document.createElement("span");
+                    caption.textContent = answer.text;
+                    button.appendChild(caption);
+                }
+            }
+            else
+            {
+                button.textContent = answer.text;
+            }
 
             button.addEventListener("click", selectAnswer);
 
@@ -168,8 +209,9 @@ function initQuiz(config)
 
         answerLog.push({
             question: activeQuestions[currentQuestionIndex].question,
+            image: activeQuestions[currentQuestionIndex].image,
             answers: activeQuestions[currentQuestionIndex].answers,
-            selectedText: selectedButton.textContent,
+            selectedIndex: parseInt(selectedButton.dataset.answerIndex, 10),
             attempted: true,
         });
 
@@ -206,8 +248,9 @@ function initQuiz(config)
 
         answerLog.push({
             question: activeQuestions[currentQuestionIndex].question,
+            image: activeQuestions[currentQuestionIndex].image,
             answers: activeQuestions[currentQuestionIndex].answers,
-            selectedText: null,
+            selectedIndex: null,
             attempted: false,
         });
 
@@ -277,20 +320,47 @@ function initQuiz(config)
             questionEl.textContent = `Q${index + 1}. ${entry.question}`;
             item.appendChild(questionEl);
 
+            if (entry.image)
+            {
+                const img = document.createElement("img");
+                img.src = entry.image;
+                img.alt = "Graph for this question";
+                img.classList.add("quiz-review-question-image");
+                item.appendChild(img);
+            }
+
             const answersEl = document.createElement("div");
             answersEl.classList.add("quiz-review-answers");
 
-            entry.answers.forEach((answer) =>
+            entry.answers.forEach((answer, answerIndex) =>
             {
                 const answerEl = document.createElement("div");
                 answerEl.classList.add("quiz-review-answer");
-                answerEl.textContent = answer.text;
+
+                if (answer.image)
+                {
+                    answerEl.classList.add("quiz-review-answer--image");
+                    const img = document.createElement("img");
+                    img.src = answer.image;
+                    img.alt = answer.text || "Answer option graph";
+                    answerEl.appendChild(img);
+                    if (answer.text)
+                    {
+                        const caption = document.createElement("span");
+                        caption.textContent = answer.text;
+                        answerEl.appendChild(caption);
+                    }
+                }
+                else
+                {
+                    answerEl.textContent = answer.text;
+                }
 
                 if (answer.correct)
                 {
                     answerEl.classList.add("correct");
                 }
-                else if (entry.attempted && answer.text === entry.selectedText)
+                else if (entry.attempted && answerIndex === entry.selectedIndex)
                 {
                     answerEl.classList.add("incorrect");
                 }
